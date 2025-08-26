@@ -16,13 +16,13 @@ $$
 To compute the directional derivative in the direction of $\hat{u}$, one simply computes the derivative of the above parametrization with respect to $s$ and makes use of the chain rule:
 
 $$
-\frac{df}{ds} = \frac{df}{dx}\cdot\frac{dx}{ds} + \frac{df}{dy}\cdot\frac{dy}{ds} + \frac{df}{dz}\cdot\frac{dz}{ds} = \frac{df}{dx}a + \frac{df}{dy}b + \frac{df}{dz}c
+\frac{df}{ds} = \frac{\partial f}{\partial x}\cdot\frac{\partial x}{\partial s} + \frac{\partial f}{\partial y}\cdot\frac{\partial y}{\partial s} + \frac{\partial f}{\partial z}\cdot\frac{\partial z}{\partial s} = \frac{\partial f}{\partial x}a + \frac{\partial f}{\partial y}b + \frac{\partial f}{\partial z}c
 $$
 
 The above expression can be identified as a dot product between the unit vector $\hat{u}$ and another vector defined by partial derivatives:
 
 $$
-\frac{df}{ds} = \left( \hat{i}\frac{df}{dx} + \hat{j}\frac{df}{dy} + \hat{k}\frac{df}{dz} \right) \bullet \hat{u}
+\frac{df}{ds} = \left( \hat{i}\frac{\partial f}{\partial x} + \hat{j}\frac{\partial f}{\partial y} + \hat{k}\frac{\partial f}{\partial z} \right) \bullet \hat{u}
 $$
 
 The vector $\hat{i}\partial_{x}f + \hat{j}\partial_{y}f + \hat{k}\partial_{z}f$ is called the gradient of $f$ and usually denoted as $\nabla f$ or $\textnormal{grad} f$. The directional derivative of $f$ in the direction of $\hat{u}$ can then be written as:
@@ -33,11 +33,55 @@ $$
 
 This is a product of a vector depending only on position and a vector defining direction.
 
-# Properties of the gradient
+# Properties of the Gradient
 
 The gradient points in the direction of maximum change of the function $f$. To see this notice that in the above expression the directional derivative is maximum when the gradient and the unit vector are parallel. Since the gradient depends only on position, it defines the direction and amount of maximum change.
 
 The gradient is also perpendicular to the level curves of $f$. To see this consider a given level surface $f = f_0$. At any point in this surface, the function $f$ does not change. In particular, fixing a point $P_0$ in the surface $f = f_0$, any curve in the surface and passing through $P_0$ can be parametrized by a single length variable $s'\ge0$. Such curve defines a unit tangent $\hat{u'}$ at $P_0$. Since $f$ does not change along the curve, $df/ds = 0$ at $P_0$ and so the gradient is perpendicular to the tangent to the curve in the surface. This is true for any curve passing through $P_0$ and living in the surface $f = f_0$, so the gradient is perpendicular to the surface at point $P_0$. 
 
+
+
+# Other Coordinate Systems
+
+Consider other coordinate systems with coordinates $(u, v, w)$ that can be mapped to the standard Cartesian coordinates $(x, y, z)$. One could be tempted to write the gradient with respect to these coordinates as $\hat{e_u} \partial_{u}f + \hat{e_v} \partial_{v}f + \hat{e_w} \partial_{w}f$, where the vectors are the orthonormal basis $\hat{e_i} = \partial_{i}\vec{r} / \lVert \partial_{i}\vec{r} \rVert$ of the coordinate system and which could be position dependent. However, if we want to have the gradient to have the same geometrical meaning as the one defined by the rectangular coordinates, the gradient should have a different form.
+
+
+To deduce the form of the gradient, consider the scalar function dependent on the Cartesian coordinates $f(x, y, z)$. Notice a few things. First, the directions of the change of each coordinate are perpendicular to one another. Second, each any change in a coordinate defines a measure of length in a given direction. Consider now another set of Cartesian coordinates $(x',y',z')$ that differ from $(x, y, z)$ only in the alignmento of the coordinate axes. That is, the primed and un-primed rectangular coordinate systems are different only up to a rotation. The function $f$ as defined from physical space can be written to depend on either of these coordinate systems without a preference, i.e. $f(x, y, z) = f(x',y',z')$ once the coordinates are mapped to the same point in physical space $(x, y, z) \leftrightarrow (x',y',z')$. The gradient evaluated at a point in space is independent of the coordinate system chose, so one must have:
+
+$$
+\nabla f(x,y,z) = \nabla f(x',y',z'), \textnormal{ with } (x, y, z) \leftrightarrow (x',y',z')
+$$
+
+which means
+
+$$
+\hat{i}\frac{\partial f}{\partial x} + \hat{j}\frac{\partial f}{\partial y} + \hat{k}\frac{\partial f}{\partial z} = \hat{i'}\frac{\partial f}{\partial x'} + \hat{j'}\frac{\partial f}{\partial y'} + \hat{k'}\frac{\partial f}{\partial z'}, \textnormal{ with } (x, y, z) \leftrightarrow (x',y',z')
+$$
+
+So the gradient can be understood as being computable as the rate of change of the function with respect to the length coordinate of each of the orthogonal directions. We understand $\partial_{u} f$ to mean the rate of change of the function with respect to the coordinate $u$. We also know that $\lVert \partial_u \vec{r} \rVert$ is the ratio of change in length of physical space to the change in the coordinate $u$. Then $\partial_u f / \lVert \partial_u \vec{r} \rVert$ is the rate of change of $f$ with respect to the change in length associated to $u$, in the direction $\hat{e}_u$.
+
+Thus, for a set of generalized coordinates $(u, v, w)$ that define an orthonormal basis $\{\hat{e}_i\}$ at each point in space, one could find the gradient as:
+
+$$
+\nabla f(u, v, w) = \hat{e}_u \frac{1}{\lVert \partial_u \vec{r} \rVert} \cdot \frac{\partial f}{\partial u} + \hat{e}_v \frac{1}{\lVert \partial_v \vec{r} \rVert} \cdot \frac{\partial f}{\partial v} + \hat{e}_w \frac{1}{\lVert \partial_w \vec{r} \rVert} \cdot \frac{\partial f}{\partial v}
+$$
+
+
+
+For cylindrical coordinates where $(\rho, \theta, z)$ parametrize position in physical space as $\vec{r} = \hat{i} \rho\cos{\theta} +  \hat{j} \rho\sin{\theta} + \hat{k} z$, the scaling factors are:
+
+$$
+\begin{gather}
+\left\lVert \frac{\partial \vec{r}}{\partial \rho} \right\rVert = \left\lVert \hat{i} \cos{\theta} +  \hat{j} \sin{\theta} \right\rVert =  1 \\\\
+\left\lVert \frac{\partial \vec{r}}{\partial \theta} \right\rVert = \left\lVert -\hat{i} \rho\sin{\theta} +  \hat{j} \rho\cos{\theta} \right\rVert =  \rho \\\\
+\left\lVert \frac{\partial \vec{r}}{\partial z} \right\rVert = \left\lVert \hat{k} \right\rVert =  1
+\end{gather}
+$$
+
+One could also have noted that the coordinates $\rho$ and $z$ are already length coordinates. The coordinate $\theta$ is an angle with circles in the $xy$-plane as coordinate curves so, a point in space being fixed, the arc length associated to the $\theta$ coordinate is $\Delta s = \rho_0\Delta\theta$ and so the rate of change of arc length is simply $\rho$. The gradient in cylindrical coordinates becomes:
+
+```math
+\nabla f(\rho, \theta, z) = \hat{e}_\rho \frac{\partial f}{\partial\rho} + \hat{e}_\theta \frac{1}{\rho}\cdot\frac{\partial f}{\partial\theta} + \hat{e}_z \frac{\partial f}{\partial z}
+```
 
 
