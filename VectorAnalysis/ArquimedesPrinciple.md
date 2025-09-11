@@ -45,5 +45,5 @@ where $M$ is the mass of the displaced fluid. Note that since $z$ was defined as
 In this regard, Arquimedes's principle can be understood in the same intuition as the divergence theorem which relates flux of a field to its rate of change through a volume. In general, if the pressure $p$ where not a simple function of depth but rather depended more generally on position and other variables $\\{T\\}$, Arquimedes's principle would no longer hold
 
 ```math
-\vec{F}_{net} = -\iint_{\delta V} p(\vec{r}, \{T\}) \hat{n} dS = -\left( \hat{i}\iiint_{V} \nabla\cdot(p\hat{i}) dV + \hat{j}\iiint_{V}\nabla\cdot(p\hat{j}) dV + \hat{k}\iiint_{V}\nabla\cdot(p\hat{k}) dV  \right) = -\iiint_{V} \nabla p dV
+\vec{F}_{net} = -\iint_{\delta V} p(\vec{r}, \{T\}) \hat{n} dS = -\left( \hat{i}\iiint_{V} \nabla\cdot(p\hat{i}) dV + \hat{j}\iiint_{V}\nabla\cdot(p\hat{j}) dV + \hat{k}\iiint_{V}\nabla\cdot(p\hat{k}) dV  \right) = -\iiint_{V} (\nabla p) dV
 ```
