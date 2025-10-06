@@ -8,7 +8,7 @@ The divergence is standardly introduced in different ways depending on the conte
 
 with $\hat{n}$ a unit vector normal to the surface at each point, with the convention of pointing outwards from the enclosed volume.
 
-Now consider Cartesian coordinates and a natural enclosing surface of this system, a rectangular prism. Let's subdivide the enclosed volume into similar rectangular sub-volumes with no overlapping finite volume measures. The flux through each of these volumes is given by the same expression as above, evaluating over each of its enclosing surface. Note that the flux to the original outermost surface can be equated to the sum of the fluxes through all surface partitions. All surfaces not belonging to the outermost surface contribute exactly twice in the sum, but with opposing directions of its unit normals while. The net contribution of inner surfaces to the flux is therefore zero.
+Now consider Cartesian coordinates and a natural enclosing surface of this system, a rectangular prism. Let's subdivide the enclosed volume into similar rectangular sub-volumes with no overlapping finite volume measures. The flux through each of these volumes is given by the same expression as above, evaluating over each of its enclosing surface. Note that the flux to the original outermost surface can be equated to the sum of the fluxes through all surface partitions. All surfaces not belonging to the outermost surface contribute exactly twice in the sum, but with opposing directions of its unit normals. The net contribution of inner surfaces to the flux is therefore zero.
 
 Consider one of the partitioned volume regions. Focusing on the $yz$-parallel faces, the net flux is approximately equal to
 
