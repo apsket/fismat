@@ -96,6 +96,8 @@ which is the divergence theorem. For non-rectangular volumes, the theorem is sti
 
 ### General Expression for the Divergence in Curvilinear Coordinates
 
+In general, note that the flux difference for each coordinate requires the derivative of the field component scaled by the scale factors of the remaining coordinates. Since we are integrating over a volume, the factors then reappear as common divisors across all terms...
+
 ```math
 \nabla \cdot F = \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial \left( h_{v}h_{w} F_{u} \right) }{\partial u} + \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial \left( h_{u}h_{w} F_{v} \right) }{\partial v} + \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial \left( h_{u}h_{v} F_{w} \right) }{\partial w}
 ```
