@@ -52,42 +52,52 @@ which is the divergence theorem. For non-rectangular volumes, the theorem is sti
 
 ## Divergence in Curvilinear Coordinates
 
+Let's start with another derivation of the divergence before generalizing.
+
 
 ### Divergence in Cylindrical Coordinates
+
+The focus for the flux computation has to shift to the cylindrical volume element defined by a starting point $`(\rho_0, \theta_0, z_0)`$ and final position from changes to the coordinates $`(\rho_0+\Delta \rho, \theta_0+\Delta \theta, z_0+\Delta z)`$.
+
+Through a constant $`\rho`$ surface, the approximate surface area is $(\rho\Delta \theta)(\Delta z)$. Each factor is the arc length associated with a coordinate change and the area is rectangular in the limit as the deltas approach zero because the coordinates are orthogonal. Through the constant $`\rho`$ surface characterized by $`\rho_1, \rho_2`$, the net flux is approximately equal to 
 
 ```math
 \rho_1\Delta\theta\Delta z \left(-\hat{\rho} \cdot \vec{F_{\rho_1}^*} \right) + \rho_2\Delta\theta\Delta z \left(\hat{\rho} \cdot \vec{F_{\rho_1}^*}\right) = \Delta\theta\Delta z \left( \rho_2 F_{\rho_2}^* - \rho_1 F_{\rho_1}^* \right) = \left( \frac{\Delta (\rho F_{\rho})}{\Delta\rho} \right) \Delta\rho\Delta\theta\Delta z
 ```
 
+Starred values mean again a representative of the value at the surface of interest. Notice that the scale factor $`\rho`$ (associated to the $`\theta`$ angle coordinate change) is involved in the flux difference and cannot be factored out.
+
+For a constant $`\theta`$ surface, the surface area is exactly $(\Delta \rho)(\Delta z)$. The net flux through these surfaces is approximately equal to 
+
 ```math
 \Delta\rho\Delta z \left( -\hat{\theta} \cdot \vec{F_{\theta_1}^*} \right) + \Delta\rho\Delta z \left( \hat{\theta} \cdot \vec{F_{\theta_2}^*} \right) = \Delta\rho\Delta z \left( F_{\theta_2}^* - F_{\theta_1}^* \right) = \left( \frac{\Delta F_{\theta}}{\Delta\theta}  \right) \Delta\rho\Delta\theta\Delta z
 ```
+The surface area for constant $`z`$ is approximately equal to $`(\Delta \rho)(\rho^{*}\Delta \theta)`$, where $`\rho^{*}`$ is a representative of the radial distance in the surfaces where coordinate $`\rho`$ is itself changing and it can be considered the same for both surfaces. Again, orthogonality of the coordinates causes the surface area to become more accurate as the deltas shrink to zero. The net flux through constant $`z`$ surfaces is approximately equal to
 
 ```math
 \Delta\rho \left( \rho^{*}\Delta\theta \right) \left( -\hat{z} \cdot \vec{F_{z_1}^*}  \right) + \Delta\rho \left( \rho^{*}\Delta\theta \right) \left( \hat{z} \cdot \vec{F_{z_2}^*}  \right) = \Delta\rho \Delta\theta \left(  \rho^{*} F_{z}^* - \rho^{*} F_{z_2}^* \right) = \left( \frac{\Delta (\rho^{*} F_z)}{\Delta z} \right) \Delta\rho\Delta\theta\Delta z
 ```
 
-... to integrate we must separate the volume element $`\Delta V =  \rho^{*}\Delta\rho\Delta\theta\Delta z`$ ...
+The scale factor $`\rho`$ (associated to the $`\theta`$ angle coordinate change) is involved in the flux difference but can be factored out because it is the same for both surfaces. We nevertheless keep it along with the field delta for consistency through all coordinates.
+
+To be able to integrate throughout the total volume we must explicitly include the volume element $`\Delta V =  \rho^{*}\Delta\rho\Delta\theta\Delta z`$. The fluxes become
 
 ```math
-\frac{1}{\rho^{*}} \left( \frac{\Delta (\rho F_{\rho})}{\Delta\rho} \right) \Delta V
-```
-
-```math
-\frac{1}{\rho^{*}} \left( \frac{\Delta F_{\theta}}{\Delta\theta}  \right) \Delta V
-```
-
-```math
+\begin{aligned}
+\frac{1}{\rho^{*}} \left( \frac{\Delta (\rho F_{\rho})}{\Delta\rho} \right) \Delta V \\\\
+\frac{1}{\rho^{*}} \left( \frac{\Delta F_{\theta}}{\Delta\theta}  \right) \Delta V \\\\
 \frac{1}{\rho^{*}} \left( \frac{\Delta (\rho^{*} F_z)}{\Delta z} \right) \Delta V
+\end{aligned}
 ```
 
-... the volume integral ...
+Summing through all partitions and finding the limit as partitions shrink to zero, we get the volume integral
 
 ```math
+\lim_{\Delta \rho_{i}, \Delta \theta_{i}, \Delta z_{i} \to 0}\sum_{i} \left( \frac{1}{\rho^{*}} \left( \frac{\Delta (\rho F_{\rho})}{\Delta\rho} \right) + \frac{1}{\rho^{*}} \left( \frac{\Delta F_{\theta}}{\Delta\theta}  \right) + \frac{1}{\rho^{*}} \left( \frac{\Delta (\rho^{*} F_z)}{\Delta z} \right) \right) \rho^{*}\Delta\rho\Delta\theta\Delta z =
 \iiint_{V} \left( \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho F_{\rho} \right) + \frac{1}{\rho} \frac{\partial }{\partial \theta} \left( F_{\theta} \right) + \frac{\partial }{\partial z} \left( F_{z} \right) \right) \rho d\rho d\theta dz
 ```
 
-... so in cylindrical coordinates ...
+We then have for the divergence in cylindrical coordinates
 
 ```math
 \nabla \cdot F = \frac{1}{\rho} \frac{\partial}{\partial \rho} \left( \rho F_{\rho} \right) + \frac{1}{\rho} \frac{\partial }{\partial \theta} \left( F_{\theta} \right) + \frac{\partial }{\partial z} \left( F_{z} \right)
@@ -96,11 +106,22 @@ which is the divergence theorem. For non-rectangular volumes, the theorem is sti
 
 ### General Expression for the Divergence in Curvilinear Coordinates
 
-In general, note that the flux difference for each coordinate requires the derivative of the field component scaled by the scale factors of the remaining coordinates. Since we are integrating over a volume, the factors then reappear as common divisors across all terms...
+In general, note that the flux difference for each coordinate requires the difference in the field component scaled by the scale factors of the remaining coordinates. Since divergence is to be integrated over a volume, the scale factors also reappear as common divisors across all terms in making up the volume element. It is natural then to show that for curvilinear coordinates, the divergence is expressed as
 
 ```math
 \nabla \cdot F = \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial  }{\partial u} \left( h_{v}h_{w} F_{u} \right) + \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial  }{\partial v} \left( h_{u}h_{w} F_{v} \right) + \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial }{\partial w} \left( h_{u}h_{v} F_{w} \right)
 ```
 
+where the scale factors are the standard $`h_{x_{i}} = \lVert \partial_{x_i} \vec{r} \rVert`$.
 
+For spherical coordinates, this would mean
 
+```math
+\nabla \cdot F = \frac{1}{r^{2}\sin{\theta}} \cdot \frac{\partial  }{\partial r} \left( \left(r^{2}\sin{\theta}\right) F_{r} \right) + \frac{1}{r^{2}\sin{\theta}} \cdot \frac{\partial  }{\partial \theta} \left( \left(r\sin{\theta}\right) F_{\theta} \right) + \frac{1}{r^{2}\sin{\theta}} \cdot \frac{\partial }{\partial \phi} \left( r F_{\phi} \right)
+```
+
+Simplifying terms
+
+```math
+\nabla \cdot F = \frac{1}{r^{2}} \cdot \frac{\partial  }{\partial r} \left( r^{2} \cdot F_{r} \right) + \frac{1}{r\sin{\theta}} \cdot \frac{\partial  }{\partial \theta} \left( \sin{\theta}\cdot F_{\theta} \right) + \frac{1}{r\sin{\theta}} \cdot \frac{\partial }{\partial \phi} \left( F_{\phi} \right)
+```
