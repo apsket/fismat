@@ -46,7 +46,7 @@ where the integrand is called the divergence of the field and is usually denoted
 \iint_{\delta V} \vec{F} \cdot \hat{n} dS = \iiint_{V} (\nabla\cdot F) dV
 ```
 
-which is the divergence theorem. For non-rectangular volumes, the theorem is still applicable because the region can be approximated by rectangular volumes of the required size.
+which is the divergence theorem. For non-rectangular volumes, the theorem is still applicable because the region can be approximated by very small rectangular volumes in the limiting behavior.
 
 
 
