@@ -22,7 +22,7 @@ where $`\vec{F_{x_i}^*}`$ is a representative value of the field in the $x_i$ fa
 \left( F_{x_2}^* - F_{x_1}^* \right) \Delta y \Delta z  = \left( \frac{F_{x_2}^* - F_{x_1}^*}{\Delta x} \right) \Delta x\Delta y \Delta z  = \left( \frac{\Delta F_{x}^{*}}{\Delta x} \right) \Delta x\Delta y \Delta z
 ```
 
-which is of course done attempting to pave the way to a derivative expression. Considering all six rectangular faces, the net flux becomes
+which is of course done attempting to pave the way to a derivative expression. We are moving from an explicit flux computation using the field component to a computation that involves rates of change of the field component. Considering all six rectangular faces, the net flux becomes
 
 ```math
 \left( \frac{\Delta F_{x}^{*}}{\Delta x} \right) \Delta x\Delta y \Delta z + \left( \frac{\Delta F_{y}^{*}}{\Delta y} \right) \Delta x\Delta y \Delta z + \left( \frac{\Delta F_{z}^{*}}{\Delta z} \right) \Delta x\Delta y \Delta z = \left( \frac{\Delta F_{x}^{*}}{\Delta x} + \frac{\Delta F_{y}^{*}}{\Delta y} + \frac{\Delta F_{z}^{*}}{\Delta z} \right) \Delta x\Delta y \Delta z
@@ -46,12 +46,54 @@ where the integrand is called the divergence of the field and is usually denoted
 \iint_{\delta V} \vec{F} \cdot \hat{n} dS = \iiint_{V} (\nabla\cdot F) dV
 ```
 
-which is the divergence theorem.
+which is the divergence theorem. For non-rectangular volumes, the theorem is still applicable because the region can be approximated by rectangular volumes of the required size.
+
 
 
 ## Divergence in Curvilinear Coordinates
 
-m 
+
+### Divergence in Cylindrical Coordinates
+
+```math
+\rho_1\Delta\theta\Delta z \left(-\hat{\rho} \cdot \vec{F_{\rho_1}^*} \right) + \rho_2\Delta\theta\Delta z \left(\hat{\rho} \cdot \vec{F_{\rho_1}^*}\right) = \Delta\theta\Delta z \left( \rho_2 F_{\rho_2}^* - \rho_1 F_{\rho_1}^* \right) = \left( \frac{\Delta (\rho F_{\rho})}{\Delta\rho} \right) \Delta\rho\Delta\theta\Delta z
+```
+
+```math
+\Delta\rho\Delta z \left( -\hat{\theta} \cdot \vec{F_{\theta_1}^*} \right) + \Delta\rho\Delta z \left( \hat{\theta} \cdot \vec{F_{\theta_2}^*} \right) = \Delta\rho\Delta z \left( F_{\theta_2}^* - F_{\theta_1}^* \right) = \left( \frac{\Delta F_{\theta}}{\Delta\theta}  \right) \Delta\rho\Delta\theta\Delta z
+```
+
+```math
+\Delta\rho \left( \rho^{*}\Delta\theta \right) \left( -\hat{z} \cdot \vec{F_{z_1}^*}  \right) + \Delta\rho \left( \rho^{*}\Delta\theta \right) \left( \hat{z} \cdot \vec{F_{z_2}^*}  \right) = \Delta\rho \Delta\theta \left(  \rho^{*} F_{z}^* - \rho^{*} F_{z_2}^* \right) = \left( \frac{\Delta (\rho^{*} F_z)}{\Delta z} \right) \Delta\rho\Delta\theta\Delta z
+```
+
+... to integrate we must separate the volume element $`\Delta V =  \rho^{*}\Delta\rho\Delta\theta\Delta z`$ ...
+
+```math
+\frac{1}{\rho^{*}} \left( \frac{\Delta (\rho F_{\rho})}{\Delta\rho} \right) \Delta V
+```
+
+```math
+\frac{1}{\rho^{*}} \left( \frac{\Delta F_{\theta}}{\Delta\theta}  \right) \Delta V
+```
+
+```math
+\frac{1}{\rho^{*}} \left( \frac{\Delta (\rho^{*} F_z)}{\Delta z} \right) \Delta V
+```
+
+... the volume integral ...
+
+```math
+\iiint_{V} \left( \frac{1}{\rho} \frac{\partial \left( \rho F_{\rho} \right)}{\partial \rho}  \right) \rho d\rho d\theta dz
+```
+
+
+
+### General Expression for the Divergence in Curvilinear Coordinates
+
+```math
+\nabla \cdot F = \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial \left( h_{v}h_{w} F_{u} \right) }{\partial u} + \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial \left( h_{u}h_{w} F_{v} \right) }{\partial v} + \frac{1}{h_{u} h_{v} h_{w}} \cdot \frac{\partial \left( h_{u}h_{v} F_{w} \right) }{\partial w}
+```
 
 
 
