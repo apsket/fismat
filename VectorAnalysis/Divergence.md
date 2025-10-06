@@ -84,9 +84,14 @@ which is the divergence theorem. For non-rectangular volumes, the theorem is sti
 ... the volume integral ...
 
 ```math
-\iiint_{V} \left( \frac{1}{\rho} \frac{\partial \left( \rho F_{\rho} \right)}{\partial \rho}  \right) \rho d\rho d\theta dz
+\iiint_{V} \left( \frac{1}{\rho} \frac{\partial \left( \rho F_{\rho} \right)}{\partial \rho} + \frac{1}{\rho} \frac{\partial F_{\theta}}{\partial \theta} + \frac{\partial F_{z}}{\partial z} \right) \rho d\rho d\theta dz
 ```
 
+... so in cylindrical coordinates ...
+
+```math
+\nabla \cdot F = \frac{1}{\rho} \frac{\partial \left( \rho F_{\rho} \right)}{\partial \rho} + \frac{1}{\rho} \frac{\partial F_{\theta}}{\partial \theta} + \frac{\partial F_{z}}{\partial z}
+```
 
 
 ### General Expression for the Divergence in Curvilinear Coordinates
