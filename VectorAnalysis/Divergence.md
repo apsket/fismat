@@ -1,12 +1,37 @@
 # Divergence
 
-The divergence is standardly introduced in different ways depending on the context. An intuitive introduction, though not a formal proof, arises from studying the flux of a field. Consider a vector field $\vec{F}$ and a closed piecewise smooth surface $\delta V$ enclosing volume $V$. The flux of $\vec{F}$ through the surface $\delta V$ is
+The divergence is standardly introduced in different ways depending on the context. We begin by introducing it through the system-free definition of divergence from the flux of a field, and later derive algebraic expressions for it.
+
+Consider a vector field $`\vec{F}`$ and a closed piecewise smooth surface $\delta V$ enclosing volume $V$. The flux of $`\vec{F}`$ through the surface $`\delta V`$ is
 
 ```math
 \iint_{\delta V} \vec{F} \cdot \hat{n} dS
 ```
 
 with $\hat{n}$ a unit vector normal to the surface at each point, with the convention of pointing outwards from the enclosed volume.
+
+If one dividides the volume into $`N`$ volumes, then
+
+```math
+\sum_{i=1}^{N} \iint_{S_{i}} \vec{F} \cdot \hat{n} dS_{i}  = \iint_{\delta V} \vec{F} \cdot \hat{n} dS
+```
+
+because any given common surface $`D`$ to sub-surfaces $`S_{i}`$, $`S_{j}`$ contributes to zero in total. The integral at a common surface contributes with different signs at each of $`S_{i}`$, $`S_{j}`$ because their unit normals are always oppositely oriented at every point on the common surface.
+
+The fluxes are too surface dependent and do not provide any information inherent to the field, they are extensive quantities. Moreover, shrinking the volume of interest to zero would cause the flux to vanish. We could scale to another extensive quantity to peek at the field properties. A natural quantity for this could be the volume.
+
+```math
+\frac{ \iint_{\delta V} \vec{F} \cdot \hat{n} dS }{ V }
+```
+
+The limit of the above quantity as the volume shrinks to zero would be a characteristic of the field, provided it exists. The divergence at a point is then defined as
+
+```math
+\textnormal{div } F = \lim_{V\to 0} \frac{ \iint_{\delta V} \vec{F} \cdot \hat{n} dS }{ V }
+```
+where the volume in question must include the point. The divergence can be interpreted as the limiting behavior of a flux per unit volume, a scalar quantity.
+
+## Rectangular Coordinates
 
 Now consider Cartesian coordinates and a natural enclosing surface of this system, a rectangular prism. Let's subdivide the enclosed volume into similar rectangular sub-volumes with no overlapping finite volume measures. The flux through each of these volumes is given by the same expression as above, evaluating over each of its enclosing surface. Note that the flux to the original outermost surface can be equated to the sum of the fluxes through all surface partitions. All surfaces not belonging to the outermost surface contribute exactly twice in the sum, but with opposing directions of its unit normals. The net contribution of inner surfaces to the flux is therefore zero.
 
